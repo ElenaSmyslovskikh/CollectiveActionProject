@@ -39,6 +39,10 @@ class Player(BasePlayer):
         label='<strong>Укажите Ваш вуз</strong>',
         choices=['МГУ', 'МФТИ', 'НИУ ВШЭ', 'МГИМО']
     )
+    educ_level = models.StringField(
+        label='<strong>Ступень образования</strong>',
+        choices=['Бакалавриат', 'Магистратура']
+    )
     specialization = models.StringField(
         label='<strong>Укажите Ваше направление подготовки</strong>',
         choices=['МАТЕМАТИЧЕСКИЕ И ЕСТЕСТВЕННЫЕ НАУКИ',
@@ -192,7 +196,7 @@ class Intro(Page):
 
 class ControlVars(Page):
     form_model = 'player'
-    form_fields = ['age', 'gender', 'university', 'specialization', 'parent_educ']
+    form_fields = ['age', 'gender', 'university', 'educ_level', 'specialization', 'parent_educ']
 
 
 class IdentityQuestions(Page):
@@ -227,7 +231,10 @@ class NormsQuestions(Page):
     form_model = 'player'
     form_fields = ['norms_participation', 'norms_intensity']
 
+class Final(Page):
+    pass
 
-page_sequence = [Intro, ControlVars, IdentityQuestions, Treatments, NormsQuestions]
+
+page_sequence = [Intro, ControlVars, IdentityQuestions, Treatments, NormsQuestions, Final]
 
 
